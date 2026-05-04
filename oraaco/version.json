@@ -1,6 +1,6 @@
 {
-  "latest_version": "1.0.4",
-  "download_url": "https://adithyan1644.github.io/oraaco/rejani_foods_app.apk",
-  "release_notes": "Optimized mobile navigation, header alignment, and ecosystem animation.",
+  "latest_version": "1.0.5",
+  "download_url": "https://adithyan1644.github.io/oraaco/oraaco/rejani_foods_app.apk",
+  "release_notes": "Corrected APK download path and updated update system.",
   "force_update": true
 }
