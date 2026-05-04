@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Solutions | ORAACO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #F5F5F5;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      padding-top: 104px;
+    }
+
+    /* ========== STICKY HEADER ========== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+    .site-header .container { padding-top: 0; padding-bottom: 0; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 0;
+      gap: 24px;
+    }
+    .logo-area { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-img { height: 66px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-group { display: flex; flex-direction: column; }
+    .logo-main {
+      font-size: 35px; font-weight: 800; letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #F9E0A0 0%, #D4AF37 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1;
+    }
+    .logo-tagline { font-size: 10px; letter-spacing: 1.2px; font-weight: 500; color: #B8860B; margin-top: 1px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .nav-links a { color: #E5E7EB; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.2s ease; }
+    .nav-links a:hover, .nav-links a.active { color: #F5B041; }
+    .nav-btn {
+      background: linear-gradient(105deg, #B8860B, #D4AF37);
+      padding: 8px 22px; border-radius: 40px; color: black !important;
+      font-weight: 700; box-shadow: 0 4px 12px rgba(212,175,55,0.3); transition: 0.2s;
+    }
+    .nav-btn:hover {
+      background: linear-gradient(105deg, #D4AF37, #F5B041);
+      transform: translateY(-1px); box-shadow: 0 6px 14px rgba(212,175,55,0.5);
+    }
+
+    /* ========== BREADCRUMB ========== */
+    .breadcrumb { padding: 22px 0 0; display: flex; align-items: center; gap: 10px; color: #606060; font-size: 0.85rem; }
+    .breadcrumb a { color: #F5B041; text-decoration: none; transition: 0.2s; }
+    .breadcrumb a:hover { color: #FFD966; }
+    .breadcrumb .sep { color: #3A3A3A; font-size: 0.65rem; }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      padding: 64px 0 56px;
+      text-align: center;
+      position: relative;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(212,175,55,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.35);
+      padding: 6px 20px;
+      border-radius: 40px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #F5B041;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    .page-hero h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #909090;
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+
+    /* ========== SECTION LABEL ========== */
+    .section-label { display: flex; align-items: center; gap: 18px; margin-bottom: 36px; }
+    .section-label h2 { font-size: 1.6rem; font-weight: 700; color: #F1F5F9; white-space: nowrap; }
+    .gold-line { flex: 1; height: 1px; background: linear-gradient(to right, rgba(212,175,55,0.4), transparent); }
+
+    /* ========== APP SOLUTION CARD ========== */
+    .solutions-section { padding: 20px 0 80px; }
+
+    .solution-card {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      background: #080808;
+      border: 1px solid #1E1E1E;
+      border-radius: 32px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .solution-card:hover {
+      border-color: #D4AF37;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(212,175,55,0.12);
+    }
+
+    /* left accent strip */
+    .card-strip {
+      width: 6px;
+      background: linear-gradient(to bottom, #B8860B, #D4AF37, #F5B041);
+      flex-shrink: 0;
+      border-radius: 32px 0 0 32px;
+    }
+
+    /* icon column */
+    .card-icon-col {
+      padding: 40px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-icon-wrap {
+      width: 80px; height: 80px;
+      border-radius: 22px;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #D4AF37;
+      transition: 0.3s;
+    }
+    .solution-card:hover .card-icon-wrap {
+      background: rgba(212,175,55,0.16);
+      border-color: rgba(212,175,55,0.5);
+      transform: scale(1.06);
+    }
+
+    /* content */
+    .card-content {
+      padding: 36px 32px 36px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .app-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: rgba(212,175,55,0.15);
+      color: #F5B041;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+    .problem-count {
+      font-size: 0.72rem;
+      color: #666;
+      font-weight: 500;
+    }
+    .card-content h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #F8FAFC;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .card-content .tagline {
+      font-size: 0.95rem;
+      color: #F5B041;
+      font-weight: 600;
+    }
+    .card-content p {
+      color: #808080;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* feature pill row */
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #0F0F0F;
+      border: 1px solid #2A2A2A;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.73rem;
+      color: #909090;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .solution-card:hover .pill {
+      border-color: rgba(212,175,55,0.2);
+      color: #B0B0B0;
+    }
+    .pill i { color: #D4AF37; font-size: 0.65rem; }
+    .pill.done { color: #4CAF50; border-color: rgba(76,175,80,0.25); }
+    .pill.done i { color: #4CAF50; }
+
+    /* arrow */
+    .card-arrow-col {
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-arrow {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.06);
+      border: 1px solid rgba(212,175,55,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #D4AF37;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .solution-card:hover .card-arrow {
+      background: linear-gradient(135deg, #B8860B, #D4AF37);
+      border-color: #D4AF37;
+      color: black;
+      transform: translateX(4px);
+    }
+
+    /* ========== STATS SECTION ========== */
+    .stats-section { padding: 0 0 70px; }
+    .stats-grid {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 30px; background: #050505; border-radius: 60px;
+      padding: 40px 48px; border: 1px solid #2A2A2A; text-align: center;
+    }
+    .stat-item { flex: 1; min-width: 140px; }
+    .stat-number {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .stat-label { font-size: 0.9rem; color: #B8860B; margin-top: 8px; font-weight: 500; }
+
+    /* ========== FOOTER ========== */
+    .footer { border-top: 1px solid #2A2A2A; padding: 40px 0 30px; margin-top: 20px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; align-items: center; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { color: #A0A0A0; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+    .footer-links a:hover { color: #F5B041; }
+    .copyright { text-align: center; margin-top: 32px; color: #6B6B6B; font-size: 0.75rem; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 860px) {
+      .solution-card { flex-direction: column; }
+      .card-strip { width: 100%; height: 6px; border-radius: 32px 32px 0 0; }
+      .card-icon-col { padding: 28px 28px 0; }
+      .card-content { padding: 20px 28px 28px; }
+      .card-arrow-col { padding: 0 28px 28px; justify-content: flex-start; }
+    }
+    @media (max-width: 780px) {
+      .container { padding: 0 20px; }
+      .page-hero h1 { font-size: 2.4rem; }
+      .stats-grid { padding: 28px 20px; border-radius: 36px; }
+    }
+    @media (max-width: 550px) {
+      .navbar { flex-direction: row !important; justify-content: space-between !important; align-items: center !important; flex-wrap: nowrap !important; }
+      .logo-main { font-size: 24px !important; }
+      .logo-img { height: 40px !important; }
+      .logo-tagline { font-size: 8px !important; }
+      .page-hero h1 { font-size: 1.9rem; }
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #D4AF37;
+      cursor: pointer;
+      z-index: 1001;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 780px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none; /* Hide by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .navbar {
+        flex-wrap: nowrap !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY HEADER / NAVBAR -->
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar">
+        <a class="logo-area" href="index.html">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img">
+          <div class="logo-text-group">
+            <span class="logo-main">ORAACO</span>
+            <span class="logo-tagline">INNOVATE | CONNECT | GROW</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="catering_product_page.html">Products</a>
+          <a href="solutions.html" class="active">Solutions</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="rejani_foods_app.apk" download class="nav-btn">Download APK</a>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep"><i class="fas fa-chevron-right"></i></span>
+    <span>Solutions</span>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="hero-eyebrow"><i class="fas fa-lightbulb"></i> What We Solve</div>
+    <h1>Real Problems.<br>Real Solutions.</h1>
+    <p>Every app we build is designed around a specific pain point faced by real businesses. Click any solution below to see exactly what problems it solves and how.</p>
+  </div>
+
+  <!-- SOLUTIONS LIST -->
+  <div class="solutions-section">
+    <div class="section-label">
+      <h2>Our Solutions</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <!-- CARD 1 — Catering Management System -->
+    <a class="solution-card" href="solutions_catering_detail.html">
+      <div class="card-strip"></div>
+      <div class="card-icon-col">
+        <div class="card-icon-wrap"><i class="fas fa-utensils"></i></div>
+      </div>
+      <div class="card-content">
+        <div class="card-top-row">
+          <span class="app-badge">🍽️ CATERING</span>
+          <span class="problem-count">9 problems solved</span>
+        </div>
+        <h3>Catering Management System</h3>
+        <div class="tagline">End-to-End Catering Operations in One App</div>
+        <p>Running a catering business means juggling orders, inventory, billing, staff, and customer relationships — all at once. Our app brings every piece together so nothing slips through the cracks.</p>
+        <div class="feature-pills">
+          <span class="pill done"><i class="fas fa-check-circle"></i> Order Entry</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Bill Generation</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Inventory Check</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Payment &amp; Ledger</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Customer History</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Reports</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Calendar</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Daily Reminders</span>
+          <span class="pill done"><i class="fas fa-check-circle"></i> Purchase List</span>
+        </div>
+      </div>
+      <div class="card-arrow-col">
+        <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+    </a>
+
+
+
+  </div><!-- /solutions-section -->
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">500K+</div><div class="stat-label">Downloads</div></div>
+      <div class="stat-item"><div class="stat-number">100K+</div><div class="stat-label">Active Users</div></div>
+      <div class="stat-item"><div class="stat-number">4.8/5</div><div class="stat-label">User Rating</div></div>
+      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Secure</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-inner">
+      <a class="logo-area" href="index.html">
+        <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img" style="height:40px;">
+        <div class="logo-text-group">
+          <span class="logo-main" style="font-size:22px;">ORAACO</span>
+          <span class="logo-tagline" style="font-size:8px;">INNOVATE | CONNECT | GROW</span>
+        </div>
+      </a>
+      <div class="footer-contact" style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+        <div style="color: #F5B041; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">GET IN TOUCH</div>
+        <a href="tel:+917048715868" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 7048715868</a>
+        <a href="tel:+919974780443" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 9974780443</a>
+        <a href="mailto:oraacotechnologies@gmail.com" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-envelope" style="color: #D4AF37; margin-right: 8px;"></i> oraacotechnologies@gmail.com</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 ORAACO Technologies. All Rights Reserved. | Innovate. Connect. Grow.</div>
+  </div>
+
+</div>
+  <script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact ORAACO | Connect with the Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #F5F5F5;
+      line-height: 1.5;
+      overflow-x: hidden;
+      padding-top: 104px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== STICKY HEADER ========== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .logo-img { height: 60px; object-fit: contain; mix-blend-mode: screen; }
+    .logo-main {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #F9E0A0, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo-tagline { font-size: 10px; color: #B8860B; letter-spacing: 1px; text-transform: uppercase; }
+    
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: #E5E7EB; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #F5B041; }
+    .nav-btn {
+      background: linear-gradient(105deg, #B8860B, #D4AF37);
+      padding: 10px 24px;
+      border-radius: 40px;
+      color: black !important;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    /* ========== CONTACT HERO ========== */
+    .contact-hero {
+      padding: 100px 0 60px;
+      text-align: center;
+    }
+    .contact-hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      background: linear-gradient(to bottom, #FFF, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+    }
+    .contact-hero p {
+      font-size: 1.2rem;
+      color: #A0A0A0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ========== CONTACT GRID ========== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+      padding: 60px 0 120px;
+    }
+
+    /* --- INFO CARDS --- */
+    .info-column { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-card {
+      background: #0A0A0A;
+      border: 1px solid #1A1A1A;
+      padding: 40px;
+      border-radius: 32px;
+      transition: 0.3s;
+    }
+    .contact-info-card:hover { border-color: #D4AF37; transform: translateY(-5px); }
+    .info-icon {
+      width: 60px; height: 60px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .info-icon i { font-size: 1.5rem; color: #D4AF37; }
+    .contact-info-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #FFF; }
+    .contact-info-card p { color: #888; font-size: 1.05rem; line-height: 1.6; }
+    .contact-info-card a { color: #D4AF37; text-decoration: none; font-weight: 600; display: block; margin-top: 10px; }
+
+    /* --- CONTACT FORM --- */
+    .form-column {
+      background: #0A0A0A;
+      border: 1px solid #1A1A1A;
+      padding: 60px;
+      border-radius: 40px;
+      position: relative;
+    }
+    .form-column h2 { font-size: 2.2rem; margin-bottom: 40px; color: #FFF; }
+    
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; color: #666; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: #000;
+      border: 1.5px solid #222;
+      border-radius: 12px;
+      padding: 16px;
+      color: #FFF;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+    
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(105deg, #B8860B, #D4AF37);
+      color: #000;
+      border: none;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s;
+      transform: perspective(1px) translateZ(0);
+    }
+    .submit-btn:hover {
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer { border-top: 1px solid #1A1A1A; padding: 60px 0 30px; margin-top: 100px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+    .footer-contact { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .footer-contact a { color: #A0A0A0; text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+    .footer-contact a:hover { color: #F5B041; }
+    .copyright { text-align: center; margin-top: 50px; color: #444; font-size: 0.8rem; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-hero h1 { font-size: 3rem; }
+      .form-column { padding: 40px; }
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #D4AF37;
+      cursor: pointer;
+      z-index: 1001;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 780px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none; /* Hide by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .navbar {
+        flex-wrap: nowrap !important;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .navbar { flex-direction: row !important; justify-content: space-between !important; align-items: center !important; flex-wrap: nowrap !important; }
+      .logo-main { font-size: 24px !important; }
+      .logo-img { height: 40px !important; }
+      .logo-tagline { font-size: 8px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="logo-area" href="index.html">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img">
+          <div class="logo-text-group">
+            <span class="logo-main">ORAACO</span>
+            <span class="logo-tagline">Innovate | Connect | Grow</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="catering_product_page.html">Products</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html" class="active">Contact</a>
+          <a href="rejani_foods_app.apk" download class="nav-btn">Download APK</a>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="contact-hero">
+      <h1>Let's Start a Conversation.</h1>
+      <p>Whether you have a specific project in mind or just want to explore how our technology can empower your business, we're here to help.</p>
+    </section>
+
+    <div class="contact-grid">
+      <div class="info-column">
+        <div class="contact-info-card">
+          <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+          <h3>Call Us Directly</h3>
+          <p>Talk to our experts for priority support and sales inquiries.</p>
+          <a href="tel:+917048715868">+91 7048715868</a>
+          <a href="tel:+919974780443">+91 9974780443</a>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <h3>Email Our Team</h3>
+          <p>Drop us a line and we'll get back to you within 24 hours.</p>
+          <a href="mailto:oraacotechnologies@gmail.com">oraacotechnologies@gmail.com</a>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="info-icon"><i class="fas fa-headset"></i></div>
+          <h3>Support Hours</h3>
+          <p>Monday - Saturday<br>10:00 AM - 08:00 PM (IST)</p>
+        </div>
+      </div>
+
+      <div class="form-column">
+        <h2>Send a Message</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label>FULL NAME</label>
+            <input type="text" name="name" placeholder="e.g. John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>EMAIL ADDRESS</label>
+            <input type="email" name="email" id="formEmail" placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label>MOBILE NUMBER</label>
+            <input type="tel" name="mobile" id="formMobile" placeholder="e.g. +91 98765 43210">
+            <small style="color: #666; font-size: 0.75rem; margin-top: 4px; display: block;">* Please provide at least an Email or Mobile Number so we can reach you.</small>
+          </div>
+          <div class="form-group">
+            <label>SUBJECT</label>
+            <input type="text" name="subject" placeholder="How can we help?" required>
+          </div>
+          <div class="form-group">
+            <label>MESSAGE</label>
+            <textarea name="message" rows="5" placeholder="Tell us more about your inquiry..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="logo-area" href="index.html">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img" style="height:40px;">
+          <div class="logo-text-group">
+            <span class="logo-main" style="font-size:22px;">ORAACO</span>
+            <span class="logo-tagline" style="font-size:8px;">INNOVATE | CONNECT | GROW</span>
+          </div>
+        </a>
+        <div class="footer-contact">
+          <div style="color: #F5B041; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">GET IN TOUCH</div>
+          <a href="tel:+917048715868"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 7048715868</a>
+          <a href="tel:+919974780443"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 9974780443</a>
+          <a href="mailto:oraacotechnologies@gmail.com"><i class="fas fa-envelope" style="color: #D4AF37; margin-right: 8px;"></i> oraacotechnologies@gmail.com</a>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 ORAACO Technologies. All Rights Reserved. | Innovate. Connect. Grow.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  </script>
+  <script>
+    // REPLACE THIS URL with your Google Apps Script Web App URL after Deployment
+    const SPREADSHEET_URL = 'https://script.google.com/macros/s/AKfycbx793HuXXUeI_Gx3UfPGa2l6x_Hh9QdLf7RODf3C9U9Xfy1P1jmT6GxJ8g6103vo9dV/exec';
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const email = document.getElementById('formEmail').value;
+      const mobile = document.getElementById('formMobile').value;
+
+      // Custom Validation: Check at least one contact method
+      if (!email && !mobile) {
+        alert('Please enter either your Email Address or your Mobile Number so we can get back to you.');
+        return;
+      }
+
+      const originalText = btn.innerText;
+      
+      // UI Feedback
+      btn.innerText = 'SENDING...';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+
+      const formData = new FormData(this);
+      
+      // Using URLSearchParams is "bulletproof" for Google Apps Script
+      fetch(SPREADSHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Added this back to prevent CORS blocks
+        body: new URLSearchParams(formData)
+      })
+      .then(res => {
+        // Success State
+        btn.innerText = 'MESSAGE SENT!';
+        btn.style.background = '#00C853';
+        btn.style.color = '#FFF';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.opacity = '1';
+          btn.disabled = false;
+          e.target.reset();
+        }, 3000);
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        btn.innerText = 'ERROR! TRY AGAIN';
+        btn.style.background = '#D32F2F';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.opacity = '1';
+          btn.disabled = false;
+        }, 3000);
+      });
+    });
+  </script>
+
+</body>
+</html>
