@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Catering Management System | ORAACO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #F5F5F5;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      padding-top: 104px;
+    }
+
+    /* ========== STICKY HEADER ========== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+    .site-header .container { padding-top: 0; padding-bottom: 0; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 0;
+      gap: 24px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 66px;
+      width: auto;
+      object-fit: contain;
+      mix-blend-mode: screen;
+    }
+    .logo-text-group { display: flex; flex-direction: column; }
+    .logo-main {
+      font-size: 35px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #F9E0A0 0%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+    .logo-tagline {
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      font-weight: 500;
+      color: #B8860B;
+      margin-top: 1px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #E5E7EB;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #F5B041; }
+    .nav-btn {
+      background: linear-gradient(105deg, #B8860B, #D4AF37);
+      padding: 8px 22px;
+      border-radius: 40px;
+      color: black !important;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+      transition: 0.2s;
+    }
+    .nav-btn:hover {
+      background: linear-gradient(105deg, #D4AF37, #F5B041);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(212, 175, 55, 0.5);
+    }
+
+    /* ========== BREADCRUMB ========== */
+    .breadcrumb {
+      padding: 22px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #606060;
+      font-size: 0.85rem;
+    }
+    .breadcrumb a { color: #F5B041; text-decoration: none; transition: 0.2s; }
+    .breadcrumb a:hover { color: #FFD966; }
+    .breadcrumb .sep { color: #3A3A3A; font-size: 0.65rem; }
+
+    /* ========== PRODUCT HERO ========== */
+    .product-hero {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 56px;
+      padding: 52px 0 60px;
+    }
+    .product-hero-left { flex: 1; max-width: 560px; }
+
+    .product-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.12);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #F5B041;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+    .hero-badge-new {
+      background: rgba(212, 175, 55, 0.2);
+      color: #F5B041;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+    }
+    .product-hero-left h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: #F5B041;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .product-hero-left > p {
+      color: #B0B0B0;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .mini-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .mini-stat { display: flex; flex-direction: column; }
+    .mini-stat-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .mini-stat-label { font-size: 0.75rem; color: #B8860B; font-weight: 500; margin-top: 3px; }
+
+    .hero-buttons { display: flex; gap: 18px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(95deg, #B8860B, #D4AF37);
+      border: none;
+      padding: 13px 34px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 14px rgba(212, 175, 55, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(95deg, #D4AF37, #F5B041);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.6);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #B8860B;
+      padding: 13px 34px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #F5B041;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      border-color: #D4AF37;
+      color: #FFD966;
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* right column */
+    .product-hero-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .product-info-card {
+      background: #0A0A0A;
+      border: 1px solid #2A2A2A;
+      border-radius: 24px;
+      padding: 26px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px 16px;
+    }
+    .info-item label {
+      display: block;
+      font-size: 0.68rem;
+      color: #555;
+      font-weight: 600;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .info-item span { font-size: 0.92rem; font-weight: 600; color: #E0E0E0; }
+    .info-item .gold { color: #F5B041; }
+
+    .tag-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      background: #0F0F0F;
+      border: 1px solid #2A2A2A;
+      padding: 7px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      color: #A0A0A0;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+      cursor: default;
+    }
+    .chip:hover { border-color: #D4AF37; color: #F5B041; }
+    .chip i { color: #D4AF37; font-size: 0.68rem; }
+
+    /* ========== SECTION LABEL ========== */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    .section-label h2 { font-size: 1.9rem; font-weight: 700; color: #F1F5F9; white-space: nowrap; }
+    .gold-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(212,175,55,0.4), transparent);
+    }
+
+    /* ========== FEATURES GRID ========== */
+    .features-section { padding: 50px 0 40px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #0A0A0A;
+      border-radius: 24px;
+      padding: 26px 22px;
+      border: 1px solid #2A2A2A;
+      transition: all 0.2s ease;
+    }
+    .feature-card:hover {
+      border-color: #D4AF37;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(212, 175, 55, 0.1);
+    }
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #D4AF37;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #F8FAFC; }
+    .feature-card p { color: #A0A0A0; font-size: 0.9rem; line-height: 1.55; }
+
+    /* ========== SHOWCASE SECTION ========== */
+    .showcase-section { padding: 60px 0 50px; }
+
+    /* MAIN hero upload zone */
+    .showcase-main-upload {
+      background: #050505;
+      border: 2px dashed rgba(212, 175, 55, 0.3);
+      border-radius: 32px;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .showcase-main-upload:hover {
+      border-color: rgba(212, 175, 55, 0.65);
+      background: #080808;
+    }
+    .showcase-main-upload::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .upload-icon-wrap {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      color: #D4AF37;
+      transition: 0.25s;
+      position: relative;
+      z-index: 1;
+    }
+    .showcase-main-upload:hover .upload-icon-wrap {
+      background: rgba(212, 175, 55, 0.18);
+      transform: scale(1.06);
+    }
+    .upload-main-label {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #E0E0E0;
+      position: relative;
+      z-index: 1;
+    }
+    .upload-sub-label {
+      font-size: 0.88rem;
+      color: #555;
+      text-align: center;
+      max-width: 340px;
+      line-height: 1.55;
+      position: relative;
+      z-index: 1;
+    }
+    .upload-btn-fake {
+      background: transparent;
+      border: 1px solid #B8860B;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #F5B041;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+      transition: 0.2s;
+    }
+    .showcase-main-upload:hover .upload-btn-fake {
+      background: rgba(212, 175, 55, 0.08);
+      border-color: #D4AF37;
+    }
+    .showcase-main-upload input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+    .showcase-main-upload .preview-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 30px;
+      display: none;
+      padding: 20px;
+      z-index: 3;
+    }
+
+    /* THUMBNAIL GRID */
+    .showcase-thumbs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .thumb-upload {
+      background: #080808;
+      border: 2px dashed rgba(212, 175, 55, 0.22);
+      border-radius: 20px;
+      aspect-ratio: 9 / 16;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .thumb-upload:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      background: #0C0C0C;
+    }
+    .thumb-upload input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+    .thumb-upload .ti { font-size: 1.5rem; color: rgba(212, 175, 55, 0.45); transition: 0.2s; z-index: 1; }
+    .thumb-upload:hover .ti { color: #D4AF37; }
+    .thumb-upload .ts {
+      font-size: 0.72rem;
+      color: #484848;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.4;
+      z-index: 1;
+    }
+    .thumb-upload .tap-hint {
+      position: absolute;
+      bottom: 8px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.65rem;
+      color: rgba(212,175,55,0.45);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      z-index: 1;
+    }
+    .thumb-upload .thumb-preview {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      display: none;
+      z-index: 3;
+    }
+
+    .showcase-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #484848;
+      font-size: 0.8rem;
+    }
+    .showcase-note i { color: #B8860B; }
+
+    /* ========== STATS ========== */
+    .stats-section { padding: 50px 0 70px; }
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      background: #050505;
+      border-radius: 60px;
+      padding: 40px 48px;
+      border: 1px solid #2A2A2A;
+      text-align: center;
+    }
+    .stat-item { flex: 1; min-width: 140px; }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat-label { font-size: 0.9rem; color: #B8860B; margin-top: 8px; font-weight: 500; }
+
+    /* ========== MORE PRODUCTS ========== */
+    .other-products-section { padding: 60px 0 50px; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+    }
+    .product-card {
+      background: #0A0A0A;
+      border-radius: 28px;
+      padding: 26px;
+      border: 1px solid #2A2A2A;
+      transition: 0.2s;
+    }
+    .product-card:hover { border-color: #D4AF37; }
+    .product-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.2);
+      color: #F5B041;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+    .product-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: white; }
+    .product-desc { color: #A0A0A0; font-size: 0.88rem; margin: 14px 0 18px; line-height: 1.5; min-height: 60px; }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #2A2A2A;
+      padding-top: 16px;
+    }
+    .version-size {
+      font-weight: 500;
+      background: #0F0F0F;
+      padding: 4px 12px;
+      border-radius: 40px;
+      color: #DDD;
+      font-size: 0.8rem;
+    }
+    .btn-download {
+      background: transparent;
+      border: 1px solid #B8860B;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      color: #F5B041;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-download:hover { background: #D4AF37; border-color: #D4AF37; color: black; }
+
+    /* ========== FOOTER ========== */
+    .footer { border-top: 1px solid #2A2A2A; padding: 40px 0 30px; margin-top: 20px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; align-items: center; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { color: #A0A0A0; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+    .footer-links a:hover { color: #F5B041; }
+    .copyright { text-align: center; margin-top: 32px; color: #6B6B6B; font-size: 0.75rem; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .product-info-card { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 992px) {
+      .product-hero { flex-direction: column; padding: 36px 0 48px; gap: 36px; }
+      .product-hero-left { max-width: 100%; }
+      .product-hero-left h1 { font-size: 2.6rem; }
+      .showcase-thumbs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 780px) {
+      .container { padding: 0 20px; }
+      .product-hero-left h1 { font-size: 2rem; }
+      .stats-grid { padding: 28px 20px; border-radius: 36px; }
+    }
+    @media (max-width: 550px) {
+      .navbar { flex-direction: row !important; justify-content: space-between !important; align-items: center !important; flex-wrap: nowrap !important; }
+      .logo-main { font-size: 24px !important; }
+      .logo-img { height: 40px !important; }
+      .logo-tagline { font-size: 8px !important; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-outline { justify-content: center; }
+      .showcase-thumbs-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-info-card { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #D4AF37;
+      cursor: pointer;
+      z-index: 1001;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 780px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none; /* Hide by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .navbar {
+        flex-wrap: nowrap !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== STICKY HEADER / NAVBAR ====== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar">
+        <a class="logo-area" href="index.html">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img">
+          <div class="logo-text-group">
+            <span class="logo-main">ORAACO</span>
+            <span class="logo-tagline">INNOVATE | CONNECT | GROW</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="catering_product_page.html" class="active">Products</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="rejani_foods_app.apk" download class="nav-btn">Download APK</a>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+
+  <!-- ====== BREADCRUMB ====== -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep"><i class="fas fa-chevron-right"></i></span>
+    <a href="catering_product_page.html">Products</a>
+    <span class="sep"><i class="fas fa-chevron-right"></i></span>
+    <span>Catering Management System</span>
+  </div>
+
+  <!-- ====== PRODUCT HERO ====== -->
+  <div class="product-hero">
+
+    <!-- LEFT: text info -->
+    <div class="product-hero-left">
+      <div class="product-badge-row">
+        <span class="hero-badge">🍽️ Food &amp; Hospitality</span>
+        <span class="hero-badge-new">✨ FEATURED</span>
+      </div>
+      <h1>Catering<br>Management<br>System</h1>
+      <p class="subtitle">End-to-End Catering Operations in One App</p>
+      <p>A powerful, all-in-one solution built to streamline every aspect of your catering business — from order intake and menu management to delivery tracking, billing, and real-time analytics. Designed for caterers who mean business.</p>
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <span class="mini-stat-num">10K+</span>
+          <span class="mini-stat-label">Active Caterers</span>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-num">4.9★</span>
+          <span class="mini-stat-label">User Rating</span>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-num">v2.4.1</span>
+          <span class="mini-stat-label">Latest Version</span>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="rejani_foods_app.apk" download class="btn-primary" style="text-decoration: none;"><i class="fas fa-download"></i> Download APK</a>
+        <button class="btn-outline"><i class="fas fa-play-circle"></i> Watch Demo</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: product info card + chips -->
+    <div class="product-hero-right">
+      <div class="product-info-card">
+        <div class="info-item">
+          <label>Version</label>
+          <span class="gold">v2.4.1 Pro</span>
+        </div>
+        <div class="info-item">
+          <label>File Size</label>
+          <span>84 MB</span>
+        </div>
+        <div class="info-item">
+          <label>Platform</label>
+          <span>Android 8.0+</span>
+        </div>
+        <div class="info-item">
+          <label>Last Updated</label>
+          <span>April 2025</span>
+        </div>
+        <div class="info-item">
+          <label>Category</label>
+          <span>Business / Food</span>
+        </div>
+        <div class="info-item">
+          <label>Downloads</label>
+          <span class="gold">50K+</span>
+        </div>
+      </div>
+      <div class="tag-chips">
+        <span class="chip"><i class="fas fa-check-circle"></i> Verified Secure</span>
+        <span class="chip"><i class="fas fa-bolt"></i> High Performance</span>
+        <span class="chip"><i class="fas fa-cloud"></i> Cloud Sync</span>
+        <span class="chip"><i class="fas fa-lock"></i> Privacy First</span>
+        <span class="chip"><i class="fas fa-building"></i> Enterprise Ready</span>
+        <span class="chip"><i class="fas fa-chart-bar"></i> Smart Analytics</span>
+        <span class="chip"><i class="fas fa-users-cog"></i> Staff Management</span>
+        <span class="chip"><i class="fas fa-truck"></i> Live Delivery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== KEY FEATURES ====== -->
+  <div class="features-section">
+    <div class="section-label">
+      <h2>Key Features</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-clipboard-list"></i></div>
+        <h3>Order Management</h3>
+        <p>Seamlessly manage incoming orders, track status in real-time, and handle bulk bookings with zero confusion.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Menu Builder</h3>
+        <p>Create and customize dynamic menus with pricing, dietary labels, and seasonal availability controls.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-truck"></i></div>
+        <h3>Delivery Tracking</h3>
+        <p>Live GPS tracking for every delivery. Keep customers updated and dispatchers in full control at all times.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3>Billing &amp; Invoicing</h3>
+        <p>Auto-generate professional invoices, handle GST calculations, and integrate with popular payment gateways.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Smart Analytics</h3>
+        <p>Get daily, weekly, and monthly performance reports. Understand your best-sellers and peak hours instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+        <h3>Staff Management</h3>
+        <p>Assign roles, manage schedules, track attendance, and monitor staff performance from a unified dashboard.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== APP SHOWCASE ====== -->
+  <div class="showcase-section">
+    <div class="section-label">
+      <h2>App Showcase</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <!-- MAIN HERO SCREENSHOT -->
+    <div class="showcase-main-upload" id="mainUpload">
+      <input type="file" id="mainFile" accept="image/*" onchange="previewMain(event)">
+      <img class="preview-img" id="mainPreview" alt="Hero Screenshot">
+      <div class="upload-icon-wrap" id="mainIcon"><i class="fas fa-image"></i></div>
+      <div class="upload-main-label" id="mainLabel">Upload Hero Screenshot</div>
+      <div class="upload-sub-label" id="mainSub">Drop your main app showcase image here — dashboard view, home screen, or standout feature screenshot</div>
+      <div class="upload-btn-fake" id="mainBtn"><i class="fas fa-upload"></i> Choose Image</div>
+    </div>
+
+    <!-- 4 THUMBNAIL SLOTS -->
+    <div class="showcase-thumbs-grid">
+
+      <div class="thumb-upload" onclick="document.getElementById('t1').click()">
+        <input type="file" id="t1" accept="image/*" onchange="previewThumb(event,'p1','i1','s1')">
+        <img class="thumb-preview" id="p1" alt="">
+        <i class="fas fa-mobile-alt ti" id="i1"></i>
+        <span class="ts" id="s1">Screen 1<br>Order List</span>
+        <span class="tap-hint">Tap to upload</span>
+      </div>
+
+      <div class="thumb-upload" onclick="document.getElementById('t2').click()">
+        <input type="file" id="t2" accept="image/*" onchange="previewThumb(event,'p2','i2','s2')">
+        <img class="thumb-preview" id="p2" alt="">
+        <i class="fas fa-mobile-alt ti" id="i2"></i>
+        <span class="ts" id="s2">Screen 2<br>Menu Builder</span>
+        <span class="tap-hint">Tap to upload</span>
+      </div>
+
+      <div class="thumb-upload" onclick="document.getElementById('t3').click()">
+        <input type="file" id="t3" accept="image/*" onchange="previewThumb(event,'p3','i3','s3')">
+        <img class="thumb-preview" id="p3" alt="">
+        <i class="fas fa-mobile-alt ti" id="i3"></i>
+        <span class="ts" id="s3">Screen 3<br>Analytics</span>
+        <span class="tap-hint">Tap to upload</span>
+      </div>
+
+      <div class="thumb-upload" onclick="document.getElementById('t4').click()">
+        <input type="file" id="t4" accept="image/*" onchange="previewThumb(event,'p4','i4','s4')">
+        <img class="thumb-preview" id="p4" alt="">
+        <i class="fas fa-mobile-alt ti" id="i4"></i>
+        <span class="ts" id="s4">Screen 4<br>Billing</span>
+        <span class="tap-hint">Tap to upload</span>
+      </div>
+
+    </div>
+
+    <div class="showcase-note">
+      <i class="fas fa-info-circle"></i>
+      <span>Recommended: 1080×1920 px portrait for thumbnails &nbsp;|&nbsp; Supports JPG, PNG, WEBP &nbsp;|&nbsp; Click any slot to upload</span>
+    </div>
+  </div>
+
+  <!-- ====== STATS ====== -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Downloads</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10K+</div>
+        <div class="stat-label">Active Users</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.9/5</div>
+        <div class="stat-label">User Rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Secure</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ====== FOOTER ====== -->
+  <div class="footer">
+    <div class="footer-inner">
+      <a class="logo-area" href="index.html">
+        <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img" style="height:40px;">
+        <div class="logo-text-group">
+          <span class="logo-main" style="font-size:22px;">ORAACO</span>
+          <span class="logo-tagline" style="font-size:8px;">INNOVATE | CONNECT | GROW</span>
+        </div>
+      </a>
+      <div class="footer-contact" style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+        <div style="color: #F5B041; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">GET IN TOUCH</div>
+        <a href="tel:+917048715868" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 7048715868</a>
+        <a href="tel:+919974780443" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 9974780443</a>
+        <a href="mailto:oraacotechnologies@gmail.com" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-envelope" style="color: #D4AF37; margin-right: 8px;"></i> oraacotechnologies@gmail.com</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 ORAACO Technologies. All Rights Reserved. | Innovate. Connect. Grow.
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+  <script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  </script>
+<script>
+  /* Main hero upload preview */
+  function previewMain(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const r = new FileReader();
+    r.onload = function(ev) {
+      const img = document.getElementById('mainPreview');
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      ['mainIcon','mainLabel','mainSub','mainBtn'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+    };
+    r.readAsDataURL(file);
+  }
+
+  /* Thumbnail preview */
+  function previewThumb(e, previewId, iconId, spanId) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const r = new FileReader();
+    r.onload = function(ev) {
+      const img = document.getElementById(previewId);
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      document.getElementById(iconId).style.display = 'none';
+      document.getElementById(spanId).style.display = 'none';
+    };
+    r.readAsDataURL(file);
+  }
+
+  /* Stop hidden inputs from double-firing parent click */
+  document.querySelectorAll('input[type="file"]').forEach(inp => {
+    inp.addEventListener('click', e => e.stopPropagation());
+  });
+
+  /* Make main upload area clickable via its own handler */
+  document.getElementById('mainUpload').addEventListener('click', function() {
+    document.getElementById('mainFile').click();
+  });
+</script>
+</body>
+</html>

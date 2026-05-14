@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>About ORAACO | Innovate. Connect. Grow.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #F5F5F5;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      padding-top: 104px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== STICKY HEADER ========== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+    .site-header .container { padding-top: 0; padding-bottom: 0; }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 0;
+      gap: 24px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 66px;
+      width: auto;
+      object-fit: contain;
+      mix-blend-mode: screen;
+    }
+    .logo-text-group { display: flex; flex-direction: column; }
+    .logo-main {
+      font-size: 35px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #F9E0A0 0%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+    .logo-tagline {
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      font-weight: 500;
+      color: #B8860B;
+      margin-top: 1px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #E5E7EB;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #F5B041; }
+    .nav-btn {
+      background: linear-gradient(105deg, #B8860B, #D4AF37);
+      padding: 8px 22px;
+      border-radius: 40px;
+      color: black !important;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+      transition: 0.2s;
+    }
+
+    /* ========== ABOUT HERO ========== */
+    .about-hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+    .about-hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -1.5px;
+    }
+    .about-hero p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      color: #B0B0B0;
+      line-height: 1.6;
+    }
+    .gold-highlight {
+      color: #F5B041;
+      font-weight: 700;
+    }
+
+    /* ========== COMPANY MISSION SECTION ========== */
+    .mission-section {
+      padding: 100px 0;
+      position: relative;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .text-block h2 {
+      font-size: 2.8rem;
+      margin-bottom: 24px;
+      color: #F1F5F9;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .text-block p {
+      color: #A0A0A0;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* ========== STATS STRIP ========== */
+    .stats-strip {
+      background: #050505;
+      padding: 60px 0;
+      border-top: 1px solid #1A1A1A;
+      border-bottom: 1px solid #1A1A1A;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 20px;
+    }
+    .stat-item h3 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+    }
+    .stat-item p {
+      color: #666;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ========== VALUES CARDS ========== */
+    .values-section {
+      padding: 100px 0;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .value-card {
+      background: #0A0A0A;
+      border: 1px solid #1e1e1e;
+      padding: 48px;
+      border-radius: 40px;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card:hover {
+      border-color: #D4AF37;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+    }
+    .value-card i {
+      font-size: 2.8rem;
+      color: #D4AF37;
+      margin-bottom: 30px;
+    }
+    .value-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: #FFF;
+      font-weight: 700;
+    }
+    .value-card p {
+      color: #888;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* ========== TECH STACK SECTION ========== */
+    .tech-stack {
+      padding: 100px 0;
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000 70%);
+      text-align: center;
+    }
+    .tech-stack h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+    .stack-flex {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stack-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid #222;
+      padding: 20px 40px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #DDD;
+      transition: 0.3s;
+    }
+    .stack-item:hover {
+      background: rgba(212,175,55,0.05);
+      border-color: #D4AF37;
+      color: #F5B041;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer { border-top: 1px solid #2A2A2A; padding: 60px 0 30px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; align-items: center; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { color: #A0A0A0; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+    .footer-links a:hover { color: #F5B041; }
+    .copyright { text-align: center; margin-top: 50px; color: #444; font-size: 0.75rem; }
+
+    @media (max-width: 992px) {
+      .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+      .about-hero h1 { font-size: 3rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #D4AF37;
+      cursor: pointer;
+      z-index: 1001;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 780px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none; /* Hide by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .navbar {
+        flex-wrap: nowrap !important;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .navbar { flex-direction: row !important; justify-content: space-between !important; align-items: center !important; flex-wrap: nowrap !important; }
+      .logo-main { font-size: 24px !important; }
+      .logo-img { height: 40px !important; }
+      .logo-tagline { font-size: 8px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="navbar">
+        <a class="logo-area" href="index.html">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img">
+          <div class="logo-text-group">
+            <span class="logo-main">ORAACO</span>
+            <span class="logo-tagline">INNOVATE | CONNECT | GROW</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="catering_product_page.html">Products</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html" class="active">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="rejani_foods_app.apk" download class="nav-btn">Download APK</a>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="about-hero">
+      <h1>The Minds Behind the Software.</h1>
+      <p>Welcome to <span class="gold-highlight">ORAACO</span> — a software innovations lab where real-world friction meets elegant digital engineering. Led by our <span class="gold-highlight">CEO and CTO</span>, we translate complex business bottlenecks into simple, scalable solutions.</p>
+    </section>
+
+    <section class="mission-section">
+      <div class="grid-2">
+        <div class="text-block">
+          <h2>Our Philosophy</h2>
+          <p>The idea behind ORAACO wasn't just to build another tool, but to observe where technology was failing everyday business owners. We noticed a significant gap between "pro-level" complex software and the manual chaos of home-based or medium-scale enterprises.</p>
+          <p>Whether it's our flagship <span class="gold-highlight">Catering Management System</span> or our upcoming suite of enterprise tools, every project we undertake is driven by one mission: <span class="gold-highlight">To automate the mundane so you can focus on the meaningful.</span></p>
+        </div>
+        <div class="text-block">
+          <div class="value-card" style="border-left: 2px solid #D4AF37;">
+            <h3>Innovate. Connect. Grow.</h3>
+            <p>Fuelled by a cutting-edge ecosystem of <span class="gold-highlight">Flutter, Dart, and Java</span>, our products are meticulously engineered for peak performance, uncompromising security, and an intuitive user-centric experience. We don't just build software; we iterate with purpose, evolving our systems through real-world insights and the direct feedback of the businesses we empower.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>500K+</h3>
+          <p>Downloads</p>
+        </div>
+        <div class="stat-item">
+          <h3>10K+</h3>
+          <p>Active Users</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Data Security</p>
+        </div>
+        <div class="stat-item">
+          <h3>Expert</h3>
+          <p>CEO & CTO Led</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="values-section">
+      <div class="cards-grid">
+        <div class="value-card">
+          <i class="fas fa-microchip"></i>
+          <h3>Real-World Focus</h3>
+          <p>We don't build features for the sake of features. We build because we've seen someone struggle with a manual process that technology could solve in a single tap.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-lock"></i>
+          <h3>Privacy First</h3>
+          <p>User privacy and data security aren't features—they are the foundation. We are committed to a user-first approach in everything we build.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-sync"></i>
+          <h3>Continuous Growth</h3>
+          <p>Our long-term vision is to become the reliable digital backbone for businesses, evolving our systems based on the demands and needs of our community.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech-stack">
+      <h2>Engineered with Modern Technology</h2>
+      <p style="color: #666; max-width: 700px; margin: -30px auto 40px; font-size: 1.1rem;">We leverage a powerful ecosystem of cutting-edge frameworks and languages to build robust, scalable applications.</p>
+      <div class="stack-flex">
+        <div class="stack-item"><i class="fas fa-layer-group" style="color: #D4AF37; margin-right: 8px;"></i> Flutter</div>
+        <div class="stack-item">Dart</div>
+        <div class="stack-item">Java</div>
+        <div class="stack-item">Spring Boot</div>
+        <div class="stack-item">JavaScript</div>
+        <div class="stack-item">React</div>
+        <div class="stack-item">Clean Architecture</div>
+        <div class="stack-item">Scalable Cloud</div>
+        <div class="stack-item">Material 3 Design</div>
+      </div>
+    </section>
+
+  <style>
+    /* ========== ECOSYSTEM SECTION ========== */
+    .ecosystem-section {
+      padding: 100px 0;
+      text-align: center;
+      background: radial-gradient(circle at center, #080808 0%, #000 60%);
+      overflow: hidden;
+    }
+    .ecosystem-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      background: linear-gradient(to right, #FFE4B5, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .ecosystem-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-hub {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: #000;
+      border: 2px solid #D4AF37;
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-hub::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: #D4AF37;
+      opacity: 0.2;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .node {
+      position: absolute;
+      width: 65px;
+      height: 65px;
+      background: #0A0A0A;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 5;
+      transform: translate(-50%, -50%);
+    }
+    .node i {
+      color: #D4AF37;
+      font-size: 1.5rem;
+    }
+    .node:hover {
+      border-color: #D4AF37;
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+      background: #111;
+    }
+
+    /* Left Nodes - Positioned relative to 900x450 space */
+    .node-l1 { left: 13.33%; top: 7.11%; }
+    .node-l2 { left: 13.33%; top: 32.22%; }
+    .node-l3 { left: 13.33%; top: 50%; }
+    .node-l4 { left: 13.33%; top: 67.77%; }
+    .node-l5 { left: 13.33%; top: 92.88%; }
+
+    /* Right Node (User) - High Improved */
+    .user-node {
+      position: absolute;
+      right: auto;
+      left: 86.66%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      background: white;
+      border: 3px solid #D4AF37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.2);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-node::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 50%;
+      animation: userPulse 3s infinite;
+    }
+    @keyframes userPulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    .user-node i { 
+      color: #000; 
+      font-size: 2.2rem; 
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    /* SVG Lines */
+    .ecosystem-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .ecosystem-svg path {
+      stroke: rgba(212, 175, 55, 0.2);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-dasharray: 10, 15;
+      animation: dashMove 30s linear infinite;
+    }
+    @keyframes dashMove {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+    
+    /* Current Pulse Animation */
+    .pulse-line {
+      stroke: #D4AF37;
+      stroke-width: 3;
+      fill: none;
+      stroke-dasharray: 50, 1000;
+      stroke-dashoffset: 1000;
+      opacity: 0;
+      animation: flowCurrent 4s linear infinite;
+    }
+    @keyframes flowCurrent {
+      0% { stroke-dashoffset: 1000; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+
+    .pulse-1 { animation-delay: 0s; }
+    .pulse-2 { animation-delay: 0.8s; }
+    .pulse-3 { animation-delay: 1.6s; }
+    .pulse-4 { animation-delay: 2.4s; }
+    .pulse-5 { animation-delay: 3.2s; }
+
+    @media (max-width: 768px) {
+      .ecosystem-container { 
+        height: auto;
+        aspect-ratio: 900 / 450;
+        transform: scale(1.1); /* Slightly larger on mobile to fill width */
+      }
+      .ecosystem-section h2 { font-size: 2rem; margin-bottom: 30px; }
+      .node { width: 50px; height: 50px; }
+      .node i { font-size: 1.2rem; }
+      .main-hub { width: 60px; height: 60px; }
+      .main-hub img { width: 35px !important; height: 35px !important; }
+      .user-node { width: 70px; height: 70px; }
+      .user-node i { font-size: 1.8rem; }
+    }
+  </style>
+
+  <section class="ecosystem-section">
+    <div class="container">
+      <h2>Integrated Ecosystem</h2>
+      <div class="ecosystem-container">
+        <svg class="ecosystem-svg" viewBox="0 0 900 450" preserveAspectRatio="xMidYMid meet">
+          <!-- Static Paths -->
+          <path d="M 120 32 Q 300 32 450 225" />
+          <path d="M 120 145 Q 300 145 450 225" />
+          <path d="M 120 225 L 450 225" />
+          <path d="M 120 305 Q 300 305 450 225" />
+          <path d="M 120 418 Q 300 418 450 225" />
+          <path d="M 450 225 L 780 225" />
+
+          <!-- Pulse Paths (The "Current") -->
+          <path class="pulse-line pulse-1" d="M 120 32 Q 300 32 450 225" />
+          <path class="pulse-line pulse-2" d="M 120 145 Q 300 145 450 225" />
+          <path class="pulse-line pulse-3" d="M 120 225 L 450 225" />
+          <path class="pulse-line pulse-4" d="M 120 305 Q 300 305 450 225" />
+          <path class="pulse-line pulse-5" d="M 120 418 Q 300 418 450 225" />
+          <path class="pulse-line" d="M 450 225 L 780 225" style="animation-delay: 2s; animation-duration: 2s;" />
+        </svg>
+
+        <div class="node node-l1" title="Android Development">
+          <i class="fab fa-android" style="color: #3DDC84; font-size: 2rem;"></i>
+        </div>
+        <div class="node node-l2" title="Java"><i class="fab fa-java" style="color: #f8981d;"></i></div>
+        <div class="node node-l3" title="Spring Boot"><i class="fas fa-leaf" style="color: #6DB33F;"></i></div>
+        <div class="node node-l4" title="React"><i class="fab fa-react" style="color: #61DAFB;"></i></div>
+        <div class="node node-l5" title="JavaScript"><i class="fab fa-js" style="color: #F7DF1E;"></i></div>
+
+        <div class="main-hub" title="ORAACO Engine">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" style="width: 50px; height: 50px; border-radius: 50%;">
+        </div>
+
+        <div class="node user-node" title="Business Owner / Client">
+          <i class="fas fa-user-tie"></i>
+        </div>
+      </div>
+      <p style="color: #888; margin-top: 40px; font-size: 1.15rem; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+        We harness a powerhouse of <span class="gold-highlight">modern technologies</span>—merging them into a single, unified engine that delivers premium, high-performance experiences directly to our users.
+      </p>
+    </div>
+  </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="logo-area" href="index.html">
+          <img src="logo_refine_1_imgupscaler.ai_General_4K.jpg" alt="ORAACO" class="logo-img" style="height:40px;">
+          <div class="logo-text-group">
+            <span class="logo-main" style="font-size:22px;">ORAACO</span>
+            <span class="logo-tagline" style="font-size:8px;">INNOVATE | CONNECT | GROW</span>
+          </div>
+        </a>
+        <div class="footer-contact" style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+          <div style="color: #F5B041; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">GET IN TOUCH</div>
+          <a href="tel:+917048715868" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 7048715868</a>
+          <a href="tel:+919974780443" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-phone-alt" style="color: #D4AF37; margin-right: 8px;"></i> 9974780443</a>
+          <a href="mailto:oraacotechnologies@gmail.com" style="color: #A0A0A0; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-envelope" style="color: #D4AF37; margin-right: 8px;"></i> oraacotechnologies@gmail.com</a>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 ORAACO Technologies. All Rights Reserved. | Innovate. Connect. Grow.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (icon.classList.contains('fa-bars')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  </script>
+</body>
+</html>
